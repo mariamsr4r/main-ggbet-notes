@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ggbet · 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background: #f4f6fa;
+            color: #1e2330;
+        }
+
+        /* 深色头图 + 强调色 */
+        .hero {
+            background: linear-gradient(145deg, #0b0f1a 0%, #1a2235 100%);
+            color: #eef2f8;
+            padding: 3.5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f4f6fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.82;
+            font-weight: 400;
+        }
+
+        .accent {
+            color: #f5b342;
+        }
+
+        /* 主体内容区：浅色背景 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem 3rem;
+        }
+
+        /* 信息卡片式布局 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #e9ecf2;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #f5b342;
+            padding-left: 0.75rem;
+        }
+
+        .card p {
+            color: #3b4252;
+            font-size: 0.95rem;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.8rem;
+        }
+
+        .card ul li {
+            padding: 0.3rem 0;
+            padding-left: 1.4rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: #2a3140;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #f5b342;
+            font-weight: 700;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.2rem;
+            margin: 2rem 0;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9ecf2;
+        }
+
+        .link-section p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #2a3140;
+        }
+
+        .link-section a {
+            color: #c97c1f;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1.5px solid transparent;
+            transition: border-bottom 0.15s;
+        }
+
+        .link-section a:hover {
+            border-bottom-color: #c97c1f;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid #e9ecf2;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #0b0f1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .faq-item span {
+            font-size: 0.9rem;
+            color: #4a5165;
+        }
+
+        /* 提示条 */
+        .note-tip {
+            background: #fcf8f0;
+            border-left: 5px solid #f5b342;
+            padding: 1.2rem 1.5rem;
+            border-radius: 14px;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: #2a3140;
+        }
+
+        .note-tip strong {
+            color: #b16d1a;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dce0e8;
+            margin: 2rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6a7388;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dce0e8;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .faq-mini {
+                grid-template-columns: 1fr;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .link-section {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2.5rem 1rem 3.2rem;
+            }
+            .container {
+                padding: 0.5rem 1rem 2rem;
+            }
+            .card {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<section class="hero">
+    <h1>ggbet <span class="accent">·</span> 站点导览</h1>
+    <p>信息卡片式介绍 · 可信说明与使用场景<br>简洁专业，聚焦平台定位与适用人群</p>
+</section>
+
+<!-- 浅色正文区 -->
+<div class="container">
+
+    <!-- 主视觉卡片：站点介绍 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>站点概览</h3>
+            <p><a href="https://main-ggbet.com" style="color:#c97c1f; font-weight:600; text-decoration:none;">ggbet</a> 是一个面向数字互动与娱乐内容的综合信息平台。页面结构清晰，功能分区明确，主要围绕赛事数据、实时动态及社区互动展开。平台持续迭代界面与交互逻辑，以适应不同用户的使用习惯。</p>
+            <ul>
+                <li>内容覆盖多个品类与区域</li>
+                <li>支持多端自适应浏览</li>
+                <li>定期更新信息与功能模块</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>用途场景</h3>
+            <p>适用于希望快速获取信息动态、参与社区讨论或浏览赛事相关数据的用户。典型使用场景包括：</p>
+            <ul>
+                <li>信息检索与实时浏览</li>
+                <li>社区内容交流与分享</li>
+                <li>数据趋势参考与观察</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>适合人群</h3>
+            <p>对数字娱乐、数据动态及线上社区有兴趣的成年用户。平台界面偏向信息密集型，适合有一定浏览经验、注重效率与内容深度的访客。</p>
+            <ul>
+                <li>内容浏览者</li>
+                <li>数据关注者</li>
+                <li>社区活跃用户</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 自然链接段落（嵌入句子） -->
+    <div class="link-section">
+        <p>如果你希望进一步了解平台功能与最新内容，可以直接访问 <a href="https://main-ggbet.com">ggbet</a>。该站点提供了清晰的导航结构，帮助用户快速定位感兴趣的信息模块。无论是查看动态更新还是浏览分类内容，均可在首页获得直观的入口指引。</p>
+        <p>作为信息聚合类站点，<a href="https://main-ggbet.com">ggbet</a> 在页面布局上注重信息层级与可读性。对于初次接触的用户，建议先浏览主视觉区域及分类标签，以建立对整体内容框架的认知。平台在移动端与桌面端均保持了一致的使用逻辑。</p>
+    </div>
+
+    <!-- 可信说明 + 提示 -->
+    <div class="note-tip">
+        <strong>可信说明：</strong> 本页面仅对 <a href="https://main-ggbet.com" style="color:#b16d1a; font-weight:600; text-decoration:underline;">ggbet</a> 进行客观的功能与内容介绍，不包含诱导性表述或夸大承诺。所有描述基于公开可感知的平台结构与信息布局，用户应根据自身判断决定是否使用。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2 style="font-size:1.3rem; font-weight:500; margin: 1.8rem 0 0.8rem; color:#1e2330;">常见问题摘要</h2>
+    <div class="faq-mini">
+        <div class="faq-item">
+            <strong>平台主要提供什么内容？</strong>
+            <span>涵盖赛事数据、趋势信息、社区讨论及分类内容，属于综合信息类站点。</span>
+        </div>
+        <div class="faq-item">
+            <strong>是否需要注册才能浏览？</strong>
+            <span>多数信息板块可直接浏览，部分社区互动功能可能需要注册账号。</span>
+        </div>
+        <div class="faq-item">
+            <strong>移动端体验如何？</strong>
+            <span>页面采用响应式设计，在手机与平板设备上均可自适应布局，操作流畅。</span>
+        </div>
+        <div class="faq-item">
+            <strong>信息更新频率？</strong>
+            <span>平台会定期刷新数据与内容，保持信息的时效性，具体视板块而定。</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+        <span>基于客观信息呈现 · 请自行判断与使用</span>
+    </div>
+
+</div>
+
+</body>
+</html>
