@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 内容叙页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, sans-serif;
+      background: #f4f5f7;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* —— 开场 hero —— */
+    .hero {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 3.5rem 3rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02), 0 1px 4px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6e9ed;
+      margin-bottom: 2.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    .hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: #121926;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #3b4a5a;
+      max-width: 60ch;
+      margin-top: 0.5rem;
+    }
+
+    /* —— 卡片通用 —— */
+    .card {
+      background: white;
+      border-radius: 22px;
+      padding: 2.2rem 2.5rem 2.5rem;
+      border: 1px solid #e1e5ea;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 530;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+      border-left: 4px solid #2b3c5a;
+      padding-left: 1rem;
+      color: #19212b;
+    }
+
+    .card p, .card li {
+      font-size: 1rem;
+      color: #2e3b4c;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card ul li {
+      padding: 0.5rem 0;
+      padding-left: 1.8rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .card ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0.2rem;
+      color: #8b9aaf;
+      font-weight: 350;
+    }
+
+    /* —— 特点网格 —— */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .feature-item {
+      background: #fafbfc;
+      padding: 1.5rem 1.4rem;
+      border-radius: 16px;
+      border: 1px solid #e8ecf1;
+      transition: background 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #f1f4f8;
+    }
+
+    .feature-item h3 {
+      font-size: 1.05rem;
+      font-weight: 530;
+      margin-bottom: 0.5rem;
+      color: #1f2b39;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #3d4d60;
+      line-height: 1.5;
+    }
+
+    /* —— 引用/结语 —— */
+    .closing {
+      background: white;
+      border-radius: 28px;
+      padding: 2.4rem 2.8rem;
+      border: 1px solid #e1e5ea;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.6rem 0.2rem;
+    }
+
+    .closing p {
+      font-size: 1.1rem;
+      color: #213141;
+      line-height: 1.7;
+    }
+
+    .closing a {
+      color: #1a3a5c;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1.5px solid #c8d3e0;
+      transition: border-color 0.2s, color 0.15s;
+    }
+
+    .closing a:hover {
+      border-bottom-color: #1a3a5c;
+      color: #000e1f;
+    }
+
+    /* —— 细节支持 —— */
+    .scene-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.5rem 0 0.2rem;
+    }
+
+    .scene-tag {
+      background: #f0f2f5;
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.8rem;
+      color: #2b3e54;
+      border: 1px solid #dce2ea;
+      letter-spacing: 0.02em;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #dce0e6;
+      margin: 1.6rem 0 1rem;
+      opacity: 0.5;
+    }
+
+    /* —— 响应式 —— */
+    @media (max-width: 800px) {
+      body { padding: 2rem 1rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .card { padding: 1.6rem 1.2rem; }
+      .feature-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .closing { padding: 1.6rem 1.2rem; flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.6rem; }
+      .hero p { font-size: 1rem; }
+    }
+
+    /* 小提示：不显示种子，无痕 */
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 开场短句 -->
+    <section class="hero">
+      <h1>内容、连接与体验</h1>
+      <p>从游戏内容本身出发，重新梳理交互与发现的方式。不止是聚合，更是对「值得被看见」的筛选与尊重。</p>
+    </section>
+
+    <!-- 承接段落 + 特点列表合并为卡片 -->
+    <div class="card">
+      <h2>围绕主题的展开</h2>
+      <p style="margin-bottom: 1.2rem;">对玩家而言，内容的价值不在于数量，而在于发现路径是否清晰、信息是否可靠。过去几年，大量优质游戏内容被淹没在庞杂的推送与竞价排名之外。<a href="https://app-wap-igame.com" style="color: #1a3a5c; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #bcc9da;">爱游戏</a>尝试从主题与类型出发，用更克制的结构还原内容本来的位置。</p>
+      <div class="feature-grid">
+        <div class="feature-item">
+          <h3>主题化梳理</h3>
+          <p>并非罗列所有作品，而是以玩法与叙事倾向为线索，将风格相近或主题互补的游戏分组呈现。</p>
+        </div>
+        <div class="feature-item">
+          <h3>低噪界面</h3>
+          <p>减少弹窗、浮层与自动播放，保留充足的留白与文字可读性，让选择回归理性。</p>
+        </div>
+        <div class="feature-item">
+          <h3>可靠锚点</h3>
+          <p>每个推荐条目均附带来源摘要与简要说明，方便用户判断是否符合自身预期。</p>
+        </div>
+      </div>
+      <div class="scene-box">
+        <span class="scene-tag">角色扮演</span>
+        <span class="scene-tag">叙事解谜</span>
+        <span class="scene-tag">模拟策略</span>
+        <span class="scene-tag">独立作品</span>
+      </div>
+    </div>
+
+    <!-- 第二个卡片：场景 / 适用说明（替代FAQ） -->
+    <div class="card">
+      <h2>典型使用场景</h2>
+      <ul>
+        <li>想了解某个特定题材（如赛博朋克、中世纪经营）下有哪些口碑稳定、无强制内购的作品。</li>
+        <li>寻找画面风格统一、适合在移动端长时间阅读或轻度操作的交互内容。</li>
+        <li>希望跳过评分与评论区噪音，直接查看基于玩法特征整理出的简短摘要。</li>
+        <li>内容发掘者或业余评论者需要快速获取一批风格相近的游戏作为对比样本。</li>
+      </ul>
+      <hr>
+      <p style="font-size: 0.95rem; color: #435a72;">上述场景并不覆盖所有需求，但提供了一种更有结构的内容消费入口 —— 这也是当前版本侧重打磨的方向。</p>
+    </div>
+
+    <!-- 温和结尾 —— 自然嵌入链接 -->
+    <div class="closing">
+      <p>如果你对基于主题、而非榜单的内容组织方式感兴趣，可以进一步了解 <a href="https://app-wap-igame.com">爱游戏</a> 当前的设计思路与收录范围。没有广告弹窗，没有排行榜噪音，只有分类清晰的条目与克制的推荐逻辑。</p>
+      <p style="margin-top: 0.2rem; font-size: 0.95rem; color: #52677e;">—— 一次浏览，能带走的信息密度也许比想象中更多。</p>
+    </div>
+
+    <!-- 底部微小留白 -->
+    <div style="height: 0.5rem;"></div>
+
+  </div>
+</body>
+</html>
