@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 资料索引与信息整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f2f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1e2a3a;
+      padding: 2rem 1rem;
+    }
+
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* header / hero 区 */
+    .hero-tile {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e6eaef;
+      text-align: center;
+    }
+
+    .hero-tile h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #1f2a38;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-tile .sub {
+      font-size: 1rem;
+      color: #5a6a7c;
+      max-width: 550px;
+      margin: 0 auto;
+      border-top: 1px solid #e7ecf2;
+      padding-top: 1rem;
+    }
+
+    /* 卡片区通用 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.8rem 2rem;
+      border: 1px solid #e1e7ef;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.15s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #1d2b3b;
+      border-left: 4px solid #7a8fa3;
+      padding-left: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card p, .card li {
+      color: #2a3a4d;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card li {
+      padding: 0.4rem 0 0.4rem 1.5rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #7d94ab;
+      font-weight: 300;
+    }
+
+    .insight-tag {
+      display: inline-block;
+      background: #eef3f9;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #2f4156;
+      margin-right: 0.5rem;
+      margin-bottom: 0.4rem;
+      border: 1px solid #d8e1ea;
+    }
+
+    .link-sentence {
+      background: #f8faff;
+      padding: 0.9rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #dce4ef;
+      margin: 1.2rem 0 0.2rem;
+      font-size: 0.98rem;
+    }
+
+    .link-sentence a {
+      color: #1f5186;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #8faac9;
+    }
+
+    .link-sentence a:hover {
+      color: #0d2e52;
+      border-bottom-style: solid;
+    }
+
+    .faq-item {
+      border-top: 1px solid #e9eef5;
+      padding: 0.9rem 0 0.6rem;
+    }
+
+    .faq-item:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #1a2c3f;
+    }
+
+    .faq-a {
+      color: #3b4d62;
+      margin-top: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .notice-box {
+      background: #f7fafd;
+      border-left: 4px solid #b2c6d9;
+      padding: 1rem 1.3rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #2b4057;
+    }
+
+    .metadata-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      justify-content: center;
+      color: #5b6f84;
+      font-size: 0.9rem;
+      margin-top: 1.2rem;
+      border-top: 1px solid #e3eaf2;
+      padding-top: 1.2rem;
+    }
+
+    .metadata-row span {
+      background: #f0f4fb;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #e0e7f0;
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #667c92;
+      border-top: 1px solid #dae2ec;
+      padding-top: 1.8rem;
+    }
+
+    /* 响应式 */
+    @media (min-width: 640px) {
+      body {
+        padding: 3rem 2rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .hero-tile h1 {
+        font-size: 2.6rem;
+      }
+    }
+
+    @media (min-width: 1000px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .hero-tile {
+        padding: 3rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-container">
+  <!-- hero 区域 -->
+  <div class="hero-tile">
+    <h1>爱游戏 · 信息索引</h1>
+    <div class="sub">
+      从资料整理与知识归档角度，汇集平台结构、场景说明与常见问题参考。
+    </div>
+  </div>
+
+  <!-- 卡片网格：目录感布局 -->
+  <div class="card-grid">
+    <!-- 卡片 1：说明区 -->
+    <div class="card">
+      <div class="card-title">说明区 · 资料定位</div>
+      <p style="margin-bottom: 0.6rem;">
+        本页面向需要快速了解 <a href="https://app-vip-igame.com" style="color:#1f5186;text-decoration:none;font-weight:500;">爱游戏</a> 平台内容结构的使用者，提供一份不依赖广告宣传的简明目录。
+      </p>
+      <p style="margin-bottom: 0.4rem;">内容组织以功能区隔为线索：</p>
+      <ul>
+        <li>平台模块分类与基本服务描述</li>
+        <li>典型使用场景与对应操作参考</li>
+        <li>常见疑问摘要与提示汇总</li>
+      </ul>
+      <div class="link-sentence">
+        关于平台具体动态，可留意 <a href="https://app-vip-igame.com">爱游戏</a> 的更新说明与公告区。
+      </div>
+    </div>
+
+    <!-- 卡片 2：特点 / 功能区 -->
+    <div class="card">
+      <div class="card-title">功能区 · 模块特点</div>
+      <p style="margin-bottom: 0.8rem;">根据公开资料与界面结构整理，以下为较常被关注的板块：</p>
+      <div>
+        <span class="insight-tag">个人中心</span>
+        <span class="insight-tag">消息通知</span>
+        <span class="insight-tag">内容订阅</span>
+        <span class="insight-tag">收藏与记录</span>
+        <span class="insight-tag">权限管理</span>
+        <span class="insight-tag">偏好设置</span>
+      </div>
+      <p style="margin-top: 0.9rem; color: #2f4156;">
+        以上分类并非全部，仅为常用索引项。实际布局以平台内展示为准。
+      </p>
+    </div>
+
+    <!-- 卡片 3：提示区 -->
+    <div class="card">
+      <div class="card-title">提示区 · 使用备忘</div>
+      <ul>
+        <li>部分功能可能需要完成基础身份关联后才显示</li>
+        <li>界面语言、货币单位等可于个人设置中调整</li>
+        <li>如遇访问异常，可先检查网络环境或尝试更换设备</li>
+        <li>平台会定期归档历史内容，留意时间范围筛选</li>
+      </ul>
+      <div class="notice-box">
+        ⚡ 提示：建议将常用页面添加书签，以便快速调取信息。
+      </div>
+    </div>
+
+    <!-- 卡片 4：场景举例 (额外卡片，丰富布局) -->
+    <div class="card">
+      <div class="card-title">场景举例</div>
+      <p style="margin-bottom: 0.6rem;">以下为较典型的资料查找情境：</p>
+      <ul>
+        <li>整理个人参与记录与成就汇总</li>
+        <li>查阅某一时间段的动态与通知</li>
+        <li>对比不同设置下的界面反馈差异</li>
+        <li>通过收藏功能搭建自己的内容参考库</li>
+      </ul>
+    </div>
+
+    <!-- 卡片 5：FAQ 摘要 -->
+    <div class="card">
+      <div class="card-title">FAQ 摘要</div>
+      <div class="faq-item">
+        <div class="faq-q">问：资料更新频率如何？</div>
+        <div class="faq-a">平台内容依运营节奏调整，建议以实际页面为准。本索引仅作结构参考。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">问：是否支持多端同步？</div>
+        <div class="faq-a">多数与账号关联的信息支持跨设备同步，部分本地缓存设置除外。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">问：遇到显示异常应如何处理？</div>
+        <div class="faq-a">可尝试清除浏览器缓存或更换核心浏览器，仍无法解决可联系对应支持渠道。</div>
+      </div>
+    </div>
+
+    <!-- 卡片 6：相关信息区 -->
+    <div class="card">
+      <div class="card-title">相关信息区</div>
+      <p style="margin-bottom: 0.5rem;">以下为与平台相关的辅助信息源：</p>
+      <ul>
+        <li>帮助中心 / 常见问题页面</li>
+        <li>服务状态公告栏（如有）</li>
+        <li>官方文档与版本说明存档</li>
+        <li>用户社区讨论汇总（非官方）</li>
+      </ul>
+      <div class="notice-box" style="margin-top: 0.8rem;">
+        以上列举不构成推荐，仅为使用者提供自行查找的切入点。
+      </div>
+    </div>
+  </div>
+
+  <!-- metadata 行：附加索引感 -->
+  <div class="metadata-row">
+    <span>索引类别：结构 · 场景 · 提示 · FAQ</span>
+    <span>整理参考：公开界面</span>
+    <span>方向：资料归档</span>
+  </div>
+
+  <div class="footer-note">
+    本页为独立的资料整理页，所有描述基于公开信息与界面结构归纳。<br>
+    平台主体请直接访问 <a href="https://app-vip-igame.com" style="color:#1f5186;text-decoration:none;font-weight:500;">爱游戏</a> 以获取最新内容。
+  </div>
+</div>
+</body>
+</html>
